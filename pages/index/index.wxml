@@ -1,2 +1,11 @@
 <!--index.wxml-->
-<view>首页</view>
+<view class="container">
+  <navigator url="">
+    <view class="search">
+      <view class="search-input">
+        <icon type="search" size="20"></icon>
+        搜索
+      </view>
+    </view>
+  </navigator>
+</view>
