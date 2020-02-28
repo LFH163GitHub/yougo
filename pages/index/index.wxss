@@ -28,3 +28,15 @@
   width: 750rpx;
   height: 340rpx;
 }
+
+.menus {
+  display: flex;
+  justify-content: space-around;
+  align-content: center;
+  padding: 20rpx 0;
+}
+
+.menus image {
+  height: 140rpx;
+  width: 128rpx;
+}
