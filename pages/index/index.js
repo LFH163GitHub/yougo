@@ -5,7 +5,10 @@ import requset from '../../utils/request.js'
 Page({
   data: {
     banners: [],
-    menus: []
+    menus: [],
+    floors: [],
+    // 是否显示回到顶部
+    isShowTop: false
   },
   onLoad() {
     //轮播图请求
@@ -40,12 +43,50 @@ Page({
         }
         return v
       })
-      console.log(newData)
+      // console.log(newData)
       this.setData({
         menus: newData
       })
 
     })
-  }
 
+    //楼层数据
+    requset({
+      url: '/home/floordata'
+    }).then(res => {
+      console.log(res.data.message)
+      const {
+        message
+      } = res.data
+      this.setData({
+        floors: message
+      })
+    })
+
+  },
+  // 小程序回到顶部
+  handleToTop() {
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 300
+    })
+  },
+  onPageScroll(e) {
+    // console.log(e)
+    const {
+      scrollTop
+    } = e
+    let isShow = this.data.isShowTop
+    if (scrollTop > 100) {
+      isShow = true
+    } else {
+      isShow = false
+    }
+    // 避免频繁的操作setData，所以如果下面两个值是相同就没必要再赋值了
+    if (isShow == this.data.isShowTop) return;
+
+    this.setData({
+      isShowTop: isShow
+    })
+  }
 })

@@ -8,7 +8,7 @@
       </view>
     </view>
   </navigator>
-
+  <!-- 轮播图 -->
   <swiper class="swiper" indicator-dots circular indicator-color="rgba(255, 255, 255 .3)" indicator-active-color="rgba(255, 255, 255, 1)">
     <block wx:for="{{banners}}" wx:key="index">
       <swiper-item>
@@ -16,11 +16,36 @@
       </swiper-item>
     </block>
   </swiper>
+  <!-- 导航栏 -->
   <view class="menus">
     <block wx:for="{{menus}}" wx:key="index">
       <navigator url="{{item.url}}" open-type="{{item.open_type}}">
         <image src="{{item.image_src}}" mode="aspectFill"></image>
       </navigator>
     </block>
+  </view>
+
+  <!-- 楼层布局 -->
+  <view class="floor" wx:for="{{floors}}" wx:key='index'>
+    <!-- 楼层头部 -->
+    <view class="floor-top">
+      <image class="floor-title" src="{{item.floor_title.image_src}}" mode="aspectFill"></image>
+    </view>
+    <!-- 内容 -->
+    <view class="floor-content">
+      <view class="floor-content-left">
+        <image mode="aspectFill" src="{{item.product_list[0].image_src}}"></image>
+      </view>
+      <view class="floor-content-right">
+        <block wx:for="{{item.product_list}}" wx:key="index" wx:if="{{index >0}}">
+          <image mode="aspectFill" src="{{item.image_src}}"></image>
+        </block>
+      </view>
+    </view>
+  </view>
+  <!-- 回到顶部 -->
+  <view class="toTop" bindtap="handleToTop" wx:if="{{isShowTop}}">
+    <view class="arrow"></view>
+    <text>顶部</text>
   </view>
 </view>
