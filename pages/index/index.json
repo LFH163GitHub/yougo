@@ -1,5 +1,9 @@
 {
   "usingComponents": {
     "search": "../component/search/index"
-  }
+  },
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#ff2d4a",
+  "navigationBarTitleText": "首页",
+  "navigationBarTextStyle": "white"
 }

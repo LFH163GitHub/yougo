@@ -85,3 +85,9 @@
   width: 100%;
   height: 92rpx;
 }
+
+.content-right-image {
+  margin: 10rpx;
+  width: 96%;
+  height: 200rpx;
+}

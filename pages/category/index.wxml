@@ -7,6 +7,7 @@
     </view>
 
     <view class=" content-right ">
+      <image src="/images/snipaste_20200229_213327.png" mode="aspectFill" class="content-right-image"></image>
       <view class="category-list " wx:for="{{ lest[current].children }}" wx:key="index">
         <view class="category-title ">
           /
@@ -14,7 +15,7 @@
         </view>
         <view class="product-list">
           <block wx:for="{{ item.children }}" wx:key="index" wx:for-item="subitem" wx:for-index="subindex">
-            <navigator url=" ">
+            <navigator url="">
               <image mode="aspectFill" src='{{subitem.cat_icon}}'></image>
               <view>{{subitem.cat_name}}</view>
             </navigator>
