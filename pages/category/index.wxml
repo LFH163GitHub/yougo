@@ -1,2 +1,25 @@
 <!--pages/category/index.wxml-->
-<text>pages/category/index.wxml</text>
+<view class="container">
+  <search></search>
+  <view class="content">
+    <view class="content-left">
+      <view wx:for='{{100}}' wx:key="index" data-index="{{index}}" bindtap="handclick" class="list-left {{current === index ? 'active':''}}">热门推荐</view>
+    </view>
+
+    <view class=" content-right ">
+      <view class="category-list ">
+        <view class="category-title ">
+          <text>电视</text>
+        </view>
+        <view class="product-list">
+          <block wx:for="{{ 50 }}" wx:key="index">
+            <navigator url=" ">
+              <image mode="aspectFill" src='https://img12.360buyimg.com/deepvisual/s300x150_jfs/t1/96506/31/13248/7971/5e5626a0Efea3bcac/5c7268180413bad8.png!cc_300x150.webp'></image>
+              <view>小米电视</view>
+            </navigator>
+          </block>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

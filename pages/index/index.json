@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "component-tag-name": "../component/search/index"
+    "search": "../component/search/index"
   }
 }
