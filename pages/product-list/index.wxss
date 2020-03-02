@@ -1,12 +1,12 @@
 /* pages/product-list/index.wxss */
 
-.seatch {
+/* .seatch {
   width: 100%;
   display: flex;
   background-color: #efefef;
-}
+} */
 
-.seatch-input {
+/* .seatch-input {
   display: flex;
   justify-content: space-around;
   margin: 35rpx 20rpx;
@@ -23,6 +23,10 @@
 .seatch-input input {
   height: 100%;
   width: 100%;
+} */
+
+.search {
+  background: rgba(239, 239, 239) !important;
 }
 
 .tab {

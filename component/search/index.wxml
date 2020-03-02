@@ -1,9 +1,9 @@
 <!--component/search/index.wxml-->
-<navigator url="/pages/product-list/index">
-  <view class="search">
-    <view class="search-input">
+<navigator url="">
+  <view class="search background">
+    <view class="search-input {{align}}">
       <icon type="search" size="20"></icon>
-      搜索
+     {{keyword}}
     </view>
   </view>
 </navigator>

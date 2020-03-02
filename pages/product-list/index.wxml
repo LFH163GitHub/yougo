@@ -1,12 +1,14 @@
 <!--pages/product-list/index.wxml-->
 <view class="container">
   <!-- 搜索框 -->
-  <view class="seatch">
+  <!-- <view class="seatch">
     <view class="seatch-input">
       <icon type="search" size="30"></icon>
       <input></input>
     </view>
-  </view>
+  </view> -->
+  <!-- 搜索组件 -->
+  <search keyword="{{keyword}}" background="search" align="left" />
   <!-- 导航栏 -->
   <view class="navigation">
     <view class="tab">
