@@ -1,5 +1,5 @@
 <!--component/search/index.wxml-->
-<navigator url="">
+<navigator url="/pages/product-list/index">
   <view class="search">
     <view class="search-input">
       <icon type="search" size="20"></icon>

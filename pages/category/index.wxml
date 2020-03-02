@@ -15,7 +15,7 @@
         </view>
         <view class="product-list">
           <block wx:for="{{ item.children }}" wx:key="index" wx:for-item="subitem" wx:for-index="subindex">
-            <navigator url="">
+            <navigator url="/pages/product-list/index?keyword={{subitem.cat_name}}">
               <image mode="aspectFill" src='{{subitem.cat_icon}}'></image>
               <view>{{subitem.cat_name}}</view>
             </navigator>

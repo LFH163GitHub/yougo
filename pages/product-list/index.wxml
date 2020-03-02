@@ -1,0 +1,29 @@
+<!--pages/product-list/index.wxml-->
+<view class="container">
+  <!-- 搜索框 -->
+  <view class="seatch">
+    <view class="seatch-input">
+      <icon type="search" size="30"></icon>
+      <input></input>
+    </view>
+  </view>
+  <!-- 导航栏 -->
+  <view class="navigation">
+    <view class="tab">
+      <view wx:for="{{['综合','销量','价格']}}" wx:key="index" class="tab-item">
+        {{item}}
+        <icon wx:if="{{index===2}}" class="iconfont iconpaixu"></icon>
+      </view>
+    </view>
+    <view class="list">
+      <navigator url="" class="goods-list">
+        <image src="http://image2.suning.cn/uimg/b2c/newcatentries/0070078057-000000000634917020_1_800x800.jpg"></image>
+        <view class="goods-item-right">
+          <view class="goods-title">创维（Skyworth）65V9E 65英寸25核4K HDR高清智能电视</view>
+          <view class="price">
+            <text>￥</text>100</view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>
