@@ -28,7 +28,19 @@ Page({
         pagesize: 10
       }
     }).then(res => {
-      console.log(res)
+      const {
+        message
+      } = res.data
+      console.log(message)
+      //遍历修改goods的价格
+      const list = message.goods.map(v => {
+        v.goods_price = Number(v.goods_price).toFixed(2)
+        return v
+      })
+      // 把message商品列表保存到list
+      this.setData({
+        list
+      })
     })
 
   },

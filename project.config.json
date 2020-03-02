@@ -60,7 +60,7 @@
 					"id": 0,
 					"name": "pages/category/index",
 					"pathName": "pages/product-list/index",
-					"query": "",
+					"query": "keyword=曲面电视",
 					"scene": null
 				}
 			]
