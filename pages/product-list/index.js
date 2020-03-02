@@ -9,7 +9,8 @@ Page({
     keyword: '',
     list: [],
     more: true,
-    pagenum: 1
+    pagenum: 1,
+    loading: true
   },
 
   /**
@@ -26,6 +27,9 @@ Page({
 
   },
   getGoods() {
+    if (this.data.more === false) {
+      return
+    }
     setTimeout(v => {
       //请求商品列表
       request({
@@ -47,8 +51,17 @@ Page({
         })
         // 把message商品列表保存到list
         this.setData({
-          list: [...this.data.list, ...list]
+          list: [...this.data.list, ...list],
+          //当前请求完毕
+          loading: false
         })
+        console.log(this.data.list)
+        //判断是否最后一页
+        if (this.data.list.length >= message.total) {
+          this.setData({
+            more: false
+          })
+        }
       })
 
     }, 2000)
@@ -93,10 +106,16 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-    this.setData({
-      pagenum: this.data.pagenum + 1
-    })
-    this.getGoods();
+    // 需要等到上一次的请求回来了再执行下一页的数据
+    if (this.data.loading === false) {
+      this.setData({
+        // 每次发起请求前重新设置loadig为正在加载
+        loading: true,
+        pagenum: this.data.pagenum + 1
+      })
+      this.getGoods();
+    }
+
   },
 
   /**
