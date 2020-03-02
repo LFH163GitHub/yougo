@@ -70,6 +70,14 @@
   color: red;
   font-size: 22px;
 }
-.price text{
+
+.price text {
   font-size: 14px;
+}
+
+.load-more {
+  padding: 20px;
+  font-size: 13px;
+  color: #999;
+  text-align: center;
 }

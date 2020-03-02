@@ -7,7 +7,9 @@ Page({
    */
   data: {
     keyword: '',
-    list: []
+    list: [],
+    more: true,
+    pagenum: 1
   },
 
   /**
@@ -20,29 +22,36 @@ Page({
     this.setData({
       keyword: keyword
     })
-    request({
-      url: "/goods/search",
-      data: {
-        query: this.data.keyword,
-        pagenum: 1,
-        pagesize: 10
-      }
-    }).then(res => {
-      const {
-        message
-      } = res.data
-      console.log(message)
-      //遍历修改goods的价格
-      const list = message.goods.map(v => {
-        v.goods_price = Number(v.goods_price).toFixed(2)
-        return v
-      })
-      // 把message商品列表保存到list
-      this.setData({
-        list
-      })
-    })
+    this.getGoods();
 
+  },
+  getGoods() {
+    setTimeout(v => {
+      //请求商品列表
+      request({
+        url: "/goods/search",
+        data: {
+          query: this.data.keyword,
+          pagenum: this.data.pagenum,
+          pagesize: 10
+        }
+      }).then(res => {
+        const {
+          message
+        } = res.data
+        console.log(message)
+        //遍历修改goods的价格
+        const list = message.goods.map(v => {
+          v.goods_price = Number(v.goods_price).toFixed(2)
+          return v
+        })
+        // 把message商品列表保存到list
+        this.setData({
+          list: [...this.data.list, ...list]
+        })
+      })
+
+    }, 2000)
   },
 
   /**
@@ -84,7 +93,10 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function() {
-
+    this.setData({
+      pagenum: this.data.pagenum + 1
+    })
+    this.getGoods();
   },
 
   /**

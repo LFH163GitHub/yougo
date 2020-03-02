@@ -26,4 +26,10 @@
       </navigator>
     </view>
   </view>
+
+  <!-- 拖动到底部 -->
+  <view class="load-more">
+    <text wx:if="{{more}}">加载中</text>
+    <text wx:if="{{!more}}">没有更多数据</text>
+  </view>
 </view>
