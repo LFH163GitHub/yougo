@@ -27,8 +27,15 @@ Page({
     const {
       value
     } = e.detail
+    this.setData({
+      inputValue: value
+    });
     // 如果value有值才发起请求
     if (!value) {
+      // 把搜索建议的数组清空
+      this.setData({
+        recommend: []
+      });
       return;
     }
     // 请求搜索建议
@@ -47,6 +54,13 @@ Page({
         recommend: message
       })
     })
+  },
+  handleCancel() {
+    // 把搜索建议的数组清空
+    this.setData({
+      inputValue: "",
+      recommend: []
+    });
   },
 
   /**
