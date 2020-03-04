@@ -1,5 +1,5 @@
 <!--pages/search/index.wxml-->
-<view class="container">
+<view class="container" >
   <!-- 搜索栏 -->
   <view class="search-wrapper">
     <view class="search">
@@ -7,14 +7,15 @@
         <icon type="search" size="20" />
         <!-- bindinput类似于oninput，监听用户的输入事件 -->
         <!-- bindconfirm是按下回车键时候触发的事件 -->
-        <input bindinput="handleInput" value="{{inputValue}}" placeholder="请输入您想要的商品" bindconfirm="handleEnter" bindblur="handleBlur"></input>
+        <input bindinput="handleInput" value="{{inputValue}}" placeholder="请输入您想要的商品" bindconfirm="handleEnter" bindblur="handleBlur" bindfocus="handleFocus"></input>
       </view>
       <view wx:if="{{inputValue}}" class="cancel-button" bindtap="handleCancel">取消</view>
 
       <!-- 搜索建议的列表 -->
       <!-- recommend.length是判断数组有值的时候才显示下拉列表 -->
-      <view class="recommend" wx:if="{{recommend.length}}">
-        <navigator  wx:for="{{recommend}}" wx:key="index" url="/pages/product-list/index?keyword={{item.goods_name}}">
+      <view id="recommend" class="recommend" wx:if="{{recommend.length}}">
+      <!-- /pages/product-list/index?keyword={{item.goods_name}} -->
+        <navigator  wx:for="{{recommend}}" wx:key="index" url="" data-name="{{item.goods_name}}" bindtap="handleShowList">
           {{item.goods_name}}
         </navigator>
       </view>

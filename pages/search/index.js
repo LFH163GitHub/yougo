@@ -139,5 +139,22 @@ Page({
     wx.redirectTo({
       url: "/pages/product-list/index?keyword=" + this.data.inputValue
     })
+  },
+  handleShowList(e){
+    console.log(e.target.dataset.name)
+    let arr = wx.getStorageSync("history");
+    // 如果本地没有数据或者arr不是一个数组
+    if (!Array.isArray(arr)) {
+      arr = [];
+    }
+    // 添加到数组的第一位
+    arr.unshift(e.target.dataset.name);
+    // 数组去重
+    arr = [...new Set(arr)]
+    // 把搜索关键字保存到本地
+    wx.setStorageSync('history', arr)
+  },
+  handleFocus(e){
+    this.handleInput(e)
   }
 })

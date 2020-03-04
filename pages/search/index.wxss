@@ -1,5 +1,7 @@
 /* pages/search/index.wxss */
-
+.container{
+  min-height: 100vh
+}
 .search-wrapper {
   padding: 20rpx;
   background: rgba(239, 239, 239);
