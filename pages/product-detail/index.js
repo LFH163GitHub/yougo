@@ -47,10 +47,15 @@ Page({
     })
   },
   // 预览图片
-  handlePreview() {
+  handlePreview(e) {
+    // console.log(e)
+    const {
+      index
+    } = e.target.dataset
     wx.previewImage({
-      //current: '', // 当前显示图片的http链接
+      current: this.data.picUrls[index], // 当前显示图片的http链接
       urls: this.data.picUrls // 需要预览的图片http链接列表
+
     })
   }
 })
