@@ -93,7 +93,7 @@ Page({
       })
 
       //判断是否最新的值
-      if (this.data.lastValue == this.data.inputValue) {
+      if (this.data.lastValue !== this.data.inputValue) {
         this.getRecommend();
       }
     })
@@ -140,8 +140,8 @@ Page({
       url: "/pages/product-list/index?keyword=" + this.data.inputValue
     })
   },
-  handleShowList(e) {
-    console.log(e.target.dataset.name)
+  handlelist(e) {
+    // console.log(e.target.dataset.name)
     let arr = wx.getStorageSync("history");
     // 如果本地没有数据或者arr不是一个数组
     if (!Array.isArray(arr)) {
@@ -153,8 +153,24 @@ Page({
     arr = [...new Set(arr)]
     // 把搜索关键字保存到本地
     wx.setStorageSync('history', arr)
+    wx.redirectTo({
+      url: "/pages/product-list/index?keyword=" + e.target.dataset.name
+    })
   },
   handleFocus(e) {
     this.handleInput(e)
+  },
+  handleShowList(e) {
+    // e.target是当然点击的元素
+    const {
+      onlyid
+    } = e.target.dataset;
+
+    // 如果id不存在，说明点击并不是下拉列表
+    if (!onlyid) {
+      this.setData({
+        recommend: []
+      })
+    }
   }
 })
