@@ -57,7 +57,7 @@
       <text>购物车</text>
     </view>
 
-    <view class="btn-color">加入购物车</view>
+    <view class="btn-color" bindtap="handleToCart">加入购物车</view>
     <view class="btn-color">立即购买</view>
   </view>
 </view>
