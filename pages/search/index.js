@@ -46,7 +46,7 @@ Page({
       inputValue: value
     });
     // 如果value有值才发起请求
-    if (!value) {
+    if (!value.trim()) {
       // 把搜索建议的数组清空
       this.setData({
         recommend: []
@@ -68,13 +68,13 @@ Page({
 
   getRecommend() {
 
-    if (this.data.loding === false) {
-      this.setData({
-        loading: true,
-        // 记录当前搜索的输入框的值
-        lastValue: this.data.inputValue
-      })
-    }
+    // if (this.data.loding === false) {
+    this.setData({
+      loading: true,
+      // 记录当前搜索的输入框的值
+      lastValue: this.data.inputValue
+    })
+    // }
     // 请求搜索建议
     request({
       url: "/goods/qsearch",
@@ -140,7 +140,7 @@ Page({
       url: "/pages/product-list/index?keyword=" + this.data.inputValue
     })
   },
-  handleShowList(e){
+  handleShowList(e) {
     console.log(e.target.dataset.name)
     let arr = wx.getStorageSync("history");
     // 如果本地没有数据或者arr不是一个数组
@@ -154,7 +154,7 @@ Page({
     // 把搜索关键字保存到本地
     wx.setStorageSync('history', arr)
   },
-  handleFocus(e){
+  handleFocus(e) {
     this.handleInput(e)
   }
 })
