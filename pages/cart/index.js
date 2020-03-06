@@ -64,6 +64,8 @@ Page({
       allPrice: price
     })
     // console.log(this.data.allPrice)
+    // 修改本地的数据
+    wx.setStorageSync("goods", this.data.goods)
   },
   handleCalc(e) {
     // console.log(e)
@@ -87,11 +89,14 @@ Page({
           if (res.confirm) {
             //删除商品
             this.data.goods.splice(index, 1)
-            // 重新修改data的goods的值
-            this.setData({
-              goods: this.data.goods
-            })
+          } else {
+            // 如果点击取消的话重新加1
+            this.data.goods[index].number += 1;
           }
+          // 重新修改data的goods的值
+          this.setData({
+            goods: this.data.goods
+          })
         }
       })
     }
