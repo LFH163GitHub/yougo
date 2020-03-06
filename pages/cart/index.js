@@ -13,6 +13,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
+    //获取本地的收获地址
+    this.setData({
+      // 如果本地没有address就等于一个空对象
+      address: wx.getStorageSync("address") || {}
+    })
 
   },
   //获取收获地址
@@ -31,6 +36,8 @@ Page({
           }
         })
         console.log(res)
+        //保存本地
+        wx.setStorageSync('address', this.data.address)
       }
     })
   }
