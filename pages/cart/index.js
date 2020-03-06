@@ -77,7 +77,25 @@ Page({
     this.setData({
       goods: this.data.goods
     })
-    this.handleAllPrice() 
+    // 判断如果数量为0时候，提示用户是否删除商品
+    if (this.data.goods[index].number === 0) {
+      wx.showModal({
+        title: '提示',
+        content: '是否删除商品',
+        success: (res) => {
+          // console.log(res)
+          if (res.confirm) {
+            //删除商品
+            this.data.goods.splice(index, 1)
+            // 重新修改data的goods的值
+            this.setData({
+              goods: this.data.goods
+            })
+          }
+        }
+      })
+    }
+    this.handleAllPrice()
     console.log(this.data.goods)
   }
 })
