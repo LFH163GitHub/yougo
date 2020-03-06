@@ -7,7 +7,9 @@ Page({
   data: {
     // 收货地址
     address: {},
-    goods: []
+    goods: [],
+    //总价格
+    allPrice: 0
   },
 
   /**
@@ -26,6 +28,7 @@ Page({
     this.setData({
       goods: wx.getStorageSync("goods") || []
     })
+    this.handleAllPrice()
   },
   //获取收获地址
   handleGetAddress() {
@@ -47,5 +50,34 @@ Page({
         wx.setStorageSync('address', this.data.address)
       }
     })
+  },
+  handleAllPrice() {
+    let price = 0
+    this.data.goods.forEach(v => {
+      // console.log(v)
+      //v是数组对象
+      price += (v.goods_price * v.number)
+    })
+
+    // 修改总价格
+    this.setData({
+      allPrice: price
+    })
+    // console.log(this.data.allPrice)
+  },
+  handleCalc(e) {
+    // console.log(e)
+    const {
+      index,
+      number
+    } = e.currentTarget.dataset;
+    this.data.goods[index].number += number;
+    // console.log(this.data.goods[index].number)
+    // 重新修改data的goods的值
+    this.setData({
+      goods: this.data.goods
+    })
+    this.handleAllPrice() 
+    console.log(this.data.goods)
   }
 })

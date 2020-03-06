@@ -83,6 +83,10 @@ Page({
     })
     console.log(exit)
     if (!exit) {
+      wx.showToast({
+        title: '数量+1',
+        icon: 'success'
+      })
       // 把当前的商品添加到本地的数组中
       goods.unshift({
         goods_id: this.data.detail.goods_id,
