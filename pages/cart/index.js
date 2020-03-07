@@ -102,5 +102,26 @@ Page({
     }
     this.handleAllPrice()
     console.log(this.data.goods)
+  },
+  bindblur(e) {
+    // console.log(e)
+    const {
+      index
+    } = e.currentTarget.dataset;
+    let {
+      value
+    } = e.detail
+    //转换数量
+    value = Math.floor(Number(value))
+
+    // console.log(this.data.goods[index].number)
+    if (value < 1) {
+      value = 1;
+    }
+    this.data.goods[index].number = value
+    this.setData({
+      goods: this.data.goods
+    })
+    this.handleAllPrice()
   }
 })
