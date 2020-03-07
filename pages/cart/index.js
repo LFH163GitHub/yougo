@@ -56,7 +56,10 @@ Page({
     this.data.goods.forEach(v => {
       // console.log(v)
       //v是数组对象
-      price += (v.goods_price * v.number)
+      if (v.select) {
+        price += (v.goods_price * v.number)
+      }
+
     })
 
     // 修改总价格
@@ -123,5 +126,23 @@ Page({
       goods: this.data.goods
     })
     this.handleAllPrice()
+  },
+  handleSelect(e) {
+    console.log(this.data.goods)
+    const {
+      index
+    } = e.target.dataset
+    const {
+      select
+    } = this.data.goods[index]
+
+    this.data.goods[index].select = !select
+    // 重新修改data的goods的值
+    this.setData({
+      goods: this.data.goods
+    });
+    // 计算总价格
+    this.handleAllPrice();
+
   }
 })
