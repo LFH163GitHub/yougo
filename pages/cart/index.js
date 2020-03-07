@@ -9,7 +9,8 @@ Page({
     address: {},
     goods: [],
     //总价格
-    allPrice: 0
+    allPrice: 0,
+    allSelect: true
   },
 
   /**
@@ -106,6 +107,7 @@ Page({
     this.handleAllPrice()
     console.log(this.data.goods)
   },
+  //输入框
   bindblur(e) {
     // console.log(e)
     const {
@@ -127,8 +129,9 @@ Page({
     })
     this.handleAllPrice()
   },
+  //点击单选框触发的事件
   handleSelect(e) {
-    console.log(this.data.goods)
+    // console.log(this.data.goods)
     const {
       index
     } = e.target.dataset
@@ -144,5 +147,47 @@ Page({
     // 计算总价格
     this.handleAllPrice();
 
+    this.allSelect();
+  },
+  //判断是否全选
+  allSelect() {
+    // 使用some写法
+    // const select = this.data.goods.some(v => {
+    //     return !v.select;
+    // })
+    //先假设全选
+    let all = true
+    // console.log(this.data.allSelect)
+    this.data.goods.forEach(v => {
+      if (all === false) {
+        return
+      }
+      if (v.select === false) {
+        all = false
+      }
+
+    })
+    console.log(this.data.allSelect)
+    // 保存全选状态
+    this.setData({
+      allSelect: all
+    })
+  },
+  // 全选功能
+  handleAllSelect() {
+    const {
+      allSelect
+    } = this.data
+
+    this.data.goods.forEach(v => {
+      v.select = true
+    })
+    this.setData({
+      goods: this.data.goods,
+      allSelect: true
+    })
+
+    //计算总价格
+    this.handleAllPrice()
   }
 })
